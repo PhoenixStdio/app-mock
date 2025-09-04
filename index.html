@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>φhinance - Your Financial Copilot</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <div class="theme-toggle-container">
+        <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">
+            <i class="fas fa-moon" id="theme-icon"></i>
+        </button>
+    </div>
+
+    <!-- Phone Container -->
+    <div class="phone-container">
+        <div class="phone-frame">
+            <div class="phone-screen">
+                <!-- Status Bar -->
+                <div class="status-bar">
+                    <div class="status-left">
+                        <span class="time">9:41</span>
+                    </div>
+                    <div class="status-center">
+                        <span class="app-title">φhinance</span>
+                    </div>
+                    <div class="status-right">
+                        <i class="fas fa-signal"></i>
+                        <i class="fas fa-wifi"></i>
+                        <i class="fas fa-battery-three-quarters"></i>
+                    </div>
+                </div>
+
+                <!-- App Header -->
+                <div class="app-header" id="app-header" style="display: none;">
+                    <div class="header-left">
+                        <h1 class="app-logo">φhinance</h1>
+                    </div>
+                    <div class="header-right">
+                        <button class="profile-btn" onclick="showScreen('profile')">
+                            <i class="fas fa-user"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- App Content Area -->
+                <div class="app-content" id="app-content">
+                    <!-- Intro Screen 1 -->
+                    <div class="screen active" id="intro-1">
+                        <div class="intro-content">
+                            <div class="intro-logo">
+                                <div class="logo-circle">
+                                    <span class="phi-symbol">φ</span>
+                                </div>
+                                <h1>φhinance</h1>
+                            </div>
+                            <div class="intro-text">
+                                <h2>Your Financial Copilot</h2>
+                                <p>Track your spending, split expenses, learn about money, and get contextual advice from your AI-powered financial copilot.</p>
+                            </div>
+                            <div class="intro-dots">
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                            <button class="btn-primary" onclick="showScreen('intro-2')">Next</button>
+                        </div>
+                    </div>
+
+                    <!-- Intro Screen 2 -->
+                    <div class="screen" id="intro-2">
+                        <div class="intro-content">
+                            <div class="intro-icon">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                            <div class="intro-text">
+                                <h2>Track Every Spend</h2>
+                                <p>View by payment method for instant clarity. Keep spending tidy with category-based budgets.</p>
+                            </div>
+                            <div class="intro-dots">
+                                <span class="dot"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                            </div>
+                            <div class="intro-buttons">
+                                <button class="btn-secondary" onclick="showScreen('intro-1')">Back</button>
+                                <button class="btn-primary" onclick="showScreen('intro-3')">Next</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Intro Screen 3 -->
+                    <div class="screen" id="intro-3">
+                        <div class="intro-content">
+                            <div class="intro-icon">
+                                <i class="fas fa-user-friends"></i>
+                            </div>
+                            <div class="intro-text">
+                                <h2>Split Expenses</h2>
+                                <p>Stop chasing friends for money. Handle shared bills, trips, and expenses without the awkward conversations.</p>
+                            </div>
+                            <div class="intro-dots">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot active"></span>
+                            </div>
+                            <div class="intro-buttons">
+                                <button class="btn-secondary" onclick="showScreen('intro-2')">Back</button>
+                                <button class="btn-primary" onclick="showScreen('signup')">Get Started</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Signup Screen -->
+                    <div class="screen" id="signup">
+                        <div class="auth-content">
+                            <div class="auth-header">
+                                <button class="btn-back" onclick="goBackFromAuth()">
+                                    <i class="fas fa-arrow-left"></i>
+                                </button>
+                                <h2>Create Account</h2>
+                            </div>
+                            <form class="auth-form">
+                                <div class="form-group">
+                                    <label>Full Name</label>
+                                    <input type="text" placeholder="Enter your full name">
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" placeholder="Enter your email">
+                                </div>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input type="password" placeholder="Create a password">
+                                </div>
+                                <button type="button" class="btn-primary" onclick="completeOnboarding(); showScreen('home')">Create Account</button>
+                            </form>
+                            <div class="auth-footer">
+                                <p>Already have an account? <a href="#" onclick="showScreen('login')">Sign In</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Login Screen -->
+                    <div class="screen" id="login">
+                        <div class="auth-content">
+                            <div class="auth-header">
+                                <button class="btn-back" onclick="showScreen('signup')">
+                                    <i class="fas fa-arrow-left"></i>
+                                </button>
+                                <h2>Welcome Back</h2>
+                            </div>
+                            <form class="auth-form">
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" placeholder="Enter your email">
+                                </div>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input type="password" placeholder="Enter your password">
+                                </div>
+                                <button type="button" class="btn-primary" onclick="completeOnboarding(); showScreen('home')">Sign In</button>
+                            </form>
+                            <div class="auth-footer">
+                                <p>Don't have an account? <a href="#" onclick="showScreen('signup')">Sign Up</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Navigation -->
+                <div class="bottom-nav" id="bottom-nav" style="display: none;">
+                    <div class="nav-item" data-screen="home" data-action="home">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </div>
+                    <div class="nav-item" data-screen="track" data-action="track">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Track</span>
+                    </div>
+                    <div class="nav-item" data-screen="split" data-action="split">
+                        <i class="fas fa-users"></i>
+                        <span>Split</span>
+                    </div>
+                    <div class="nav-item" data-screen="learn" data-action="learn">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Learn</span>
+                    </div>
+                    <div class="nav-item" data-screen="ai-chat" data-action="ai-chat">
+                        <i class="fas fa-robot"></i>
+                        <span>AI Copilot</span>
+                    </div>
+                </div>
+
+                <!-- Floating Action Button -->
+                <button class="fab" id="fab" onclick="showScreen('add-expense')">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- JavaScript Files - Load in correct order -->
+    <script src="js/navigation.js"></script>
+    <script src="js/screens.js"></script>
+    <script src="js/screens2.js"></script>
+    <script src="js/screens3.js"></script>
+    <script src="js/screens4.js"></script>
+    <script src="js/screens5.js"></script>
+    <script src="js/screens6.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
